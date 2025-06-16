@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>쇼핑몰</title>
+    <link rel="stylesheet" href="./assets/style/css/style.css">
+</head>
+<body>
+  <div id="page">
+    <header id="header">
+      <div class="container">
+        <div>
+          <h1><a href=""><img src="./assets/images/Logo-hodu.png" alt=""></a></h1>
+          <form action="">
+            <input type="text" placeholder="상품을 검색해보세요!"/>
+            <button class="text-ir search icon">검색</button>
+          </form>
+        </div>
+        <ul class="header_nav01">
+          <li><a href=""><span>장바구니</span></a></li>
+          <li><a href=""><span>로그인</span></a></li>
+        </ul>
+      </div>
+    </header>
+
+    <div>
+
+      <section>
+        <h2 class="text-ir">오픈마켓 상품 리스트들</h2>
+      </section>
+      <div class="container">
+        
+        <ul id="product-lists" class="item-lists">
+        </ul>
+      </div>
+    </div>
+
+
+    <footer id="footer">
+      <div class="container">
+        <section class="market-site-links">
+          <h2 class="text-ir">하단 쇼핑몰 관련 정보 사이트</h2>
+          <ul class="site-links">
+            <li><a href="">쇼핑몰 소개</a></li>
+            <li><a href="">이용약관</a></li>
+            <li><a href="">개인정보처리방침</a></li>
+            <li><a href="">전자금융거래약관</a></li>
+            <li><a href="">청소년보호정책</a></li>
+            <li><a href="">제휴문의</a></li>
+          </ul>
+          <ul class="sns-links">
+            <li><a href=""></a></li>
+            <li><a href=""></a></li>
+            <li><a href=""></a></li>
+          </ul>
+        </section>
+        <section>
+          <h2 class="text-ir">회사 정보</h2>
+        </section>
+      </div>
+    </footer>
+  </div>
+
+
+  <script>
+    const API_URL = 'https://api.wenivops.co.kr/services/open-market/products/';
+
+    async function fetchProducts() {
+      try {
+        const response = await fetch(API_URL);
+
+        if (!response.ok) {
+          throw new Error('네트워크 응답 오류');
+        }
+
+        const data = await response.json();
+        console.log('받은 데이터:', data);
+
+        // 응답이 배열일 경우 그대로, 객체일 경우 results 배열을 꺼냄
+        const products = Array.isArray(data) ? data : data.results;
+
+        renderProducts(products);
+      } catch (error) {
+        console.error('데이터를 가져오는 중 오류 발생:', error);
+        document.getElementById('product-lists').innerHTML = '<li>상품을 불러오는 데 실패했습니다.</li>';
+      }
+    }
+
+    function renderProducts(products) {
+      const list = document.getElementById('product-lists');
+      list.innerHTML = ''; // 초기화
+
+      products.forEach(product => {
+        const item = document.createElement('li');
+        item.classList.add('product-list')
+        item.innerHTML = `
+            <a href="">
+              <div class="img-wrap">
+                <img src="${product.image}" alt="">
+              </div>
+              <div>
+                <p>${product.info}</p>
+                <p>${product.name}</p>
+                <p><b>${product.price.toLocaleString()}</b>원</p>
+              </div>
+            </a>
+        `;
+        list.appendChild(item);
+      });
+    }
+
+    // 실행
+    fetchProducts();
+  </script>
+</body>
+</html>

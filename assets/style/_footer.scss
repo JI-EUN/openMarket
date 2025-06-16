@@ -1,0 +1,30 @@
+footer{
+  background-color: $background-gray;
+  padding:60px 0 63px;
+  .market-site-links{
+    @include flexbox(space-between,center);
+    padding-bottom: 30px;
+    border-bottom:1px solid $line-gray;
+    ul{
+      @include flexbox();
+      &.site-links{
+        li{
+          @include flexbox();
+          &::after{
+            content: "";
+            display: block;
+            width: 1px;
+            height: 14px;
+            background-color: #000;
+            margin:0 14px;
+          }
+          &:last-child{
+            &::after{
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}

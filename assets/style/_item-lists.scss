@@ -1,0 +1,13 @@
+.item-lists{
+  @include flexbox(flex-start);
+  flex-wrap: wrap;
+  gap: 70px;
+  .product-list{
+    width:380px;
+    flex-shrink: 0;
+    .img-wrap{
+      border:1px solid $line-gray;
+      border-radius: 10px;
+    }
+  }
+}
