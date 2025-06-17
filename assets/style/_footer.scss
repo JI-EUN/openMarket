@@ -1,6 +1,7 @@
 footer{
   background-color: $background-gray;
   padding:60px 0 63px;
+  margin-top:150px;
   .market-site-links{
     @include flexbox(space-between,center);
     padding-bottom: 30px;
@@ -10,6 +11,9 @@ footer{
       &.site-links{
         li{
           @include flexbox();
+          a{
+            font-size: $font-size-sm;
+          }
           &::after{
             content: "";
             display: block;
@@ -23,6 +27,45 @@ footer{
               display: none;
             }
           }
+        }
+      }
+      &.sns-links{
+        gap:14px;
+      }
+    }
+  }
+  .company-info {
+    padding-top:30px;
+    dl {
+      color:$font-gray;
+      line-height: $font-size-xl;
+      dt {
+        &:first-child{
+          font-weight: 700;
+        }
+        // 보이는 dt들 (사업자 번호, 대표)
+        &:not(.text-ir):not(:first-child) {
+          display: inline;
+          margin-right: 4px;
+        }
+      }
+      
+      dd {
+        // 사업자 번호와 업종을 한 줄로
+        &:nth-of-type(2) { // 사업자 번호
+          display: inline;
+          margin-right: 0;
+          &::after {
+            content: " | ";
+            margin: 0 4px;
+          }
+        }
+        &:nth-of-type(3) { // 업종
+          display: inline;
+          margin-bottom: 8px;
+        }
+        &:last-child {
+          margin-bottom: 0;
         }
       }
     }

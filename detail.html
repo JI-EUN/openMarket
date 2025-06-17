@@ -25,18 +25,11 @@
       </div>
     </header>
 
-    <div>
-      <section class="main-banner-wrap">
-        <h2 class="text-ir">제품 광고 배너</h2>
-      </section>
+    <div class="container">
       <section>
-        <h2 class="text-ir">오픈마켓 상품 리스트들</h2>
+        <h2 class="text-ir">제품 상세페이지</h2>
+        <div id="product-detail" class="product-container">불러오는 중...</div>
       </section>
-      <div class="container">
-        
-        <ul id="product-lists" class="item-lists">
-        </ul>
-      </div>
     </div>
 
 
@@ -109,54 +102,64 @@
 
 
   <script>
-    const API_URL = 'https://api.wenivops.co.kr/services/open-market/products/';
-
-    async function fetchProducts() {
+    async function fetchProductDetail() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const productId = urlParams.get('id');
+      if (!productId) {
+        document.getElementById('product-detail').textContent = '상품 ID가 없습니다.';
+        return;
+      } 
+      const API_URL = `https://api.wenivops.co.kr/services/open-market/products/${productId}/`;
       try {
         const response = await fetch(API_URL);
-
         if (!response.ok) {
-          throw new Error('네트워크 응답 오류');
+          throw new Error('API 응답 오류');
         }
-
-        const data = await response.json();
-        console.log('받은 데이터:', data);
-
-        // 응답이 배열일 경우 그대로, 객체일 경우 results 배열을 꺼냄
-        const products = Array.isArray(data) ? data : data.results;
-
-        renderProducts(products);
+        const product = await response.json();
+        renderProduct(product);
       } catch (error) {
-        console.error('데이터를 가져오는 중 오류 발생:', error);
-        document.getElementById('product-lists').innerHTML = '<li>상품을 불러오는 데 실패했습니다.</li>';
+        console.error('상세 정보 가져오는 중 오류:', error);
+        document.getElementById('product-detail').textContent = '상품 정보를 불러오지 못했습니다.';
       }
     }
 
-    function renderProducts(products) {
-      const list = document.getElementById('product-lists');
-      list.innerHTML = ''; // 초기화
+    function renderProduct(product) {
+      const container = document.getElementById('product-detail');
+      container.innerHTML = `
+        <!-- ① 이미지 영역 -->
+        <div class="product-image">
+          <img src="${product.image}" alt="${product.product_name}">
+        </div>
 
-      products.forEach(product => {
-        const item = document.createElement('li');
-        item.classList.add('product-list')
-        item.innerHTML = `
-            <a href="/detail.html?id=${product.id}">
-              <div class="img-wrap">
-                <img src="${product.image}" alt="">
-              </div>
-              <div>
-                <p class="product-brand">${product.info}</p>
-                <p class="product-name">${product.name}</p>
-                <p class="product-price"><b>${product.price.toLocaleString()}</b>원</p>
-              </div>
-            </a>
-        `;
-        list.appendChild(item);
-      });
+        <!-- ② 상품 정보 -->
+        <div class="product-info">
+          <p>백엔드크로브</p>
+          <h2>${product.info}</h2>
+          <p class="product-price"><b>${product.price.toLocaleString()}</b>원</p>
+        </div>
+
+        <!-- ③ 수량, 금액, 버튼 -->
+        <div class="product-action">
+          <div class="delivery">택배배송 / 무료배송</div>
+
+          <div class="quantity">
+            <label for="count">수량:</label>
+            <input id="count" type="number" value="1" min="1" style="width: 50px;" />
+          </div>
+
+          <div class="total-price">
+            총 수량 1개 / <span>17,500원</span>
+          </div>
+
+          <div class="buttons">
+            <button class="buy-btn">바로 구매</button>
+            <button class="cart-btn">장바구니</button>
+          </div>
+        </div>
+      `;
     }
 
-    // 실행
-    fetchProducts();
+    fetchProductDetail();
   </script>
 </body>
 </html>

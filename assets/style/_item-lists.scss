@@ -1,13 +1,25 @@
 .item-lists{
   @include flexbox(flex-start);
   flex-wrap: wrap;
-  gap: 70px;
+  gap:78px 70px;
+  .img-wrap{
+    margin-bottom: 16px;
+  }
   .product-list{
     width:380px;
     flex-shrink: 0;
-    .img-wrap{
-      border:1px solid $line-gray;
-      border-radius: 10px;
+    .product-brand{
+      color:$font-gray;
+    }
+    .product-name{
+      font-size: $font-size-md;
+      margin:10px 0;
+    }
+    .product-price{
+      b{
+        font-size:$font-size-xl;
+        font-weight: 700;
+      }
     }
   }
 }

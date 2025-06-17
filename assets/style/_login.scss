@@ -1,0 +1,30 @@
+.login-page{
+  @include flexbox();
+  width: 550px;
+  margin:100px auto 0;
+  flex-direction: column;
+  h1{
+    margin-bottom:70px;
+    display: inline-block;
+    text-align: center;
+  }
+  .error-text{
+    color:$danger-color;
+    margin-top: 26px;
+  }
+  ul{
+    margin-top:30px;
+    @include flexbox();
+    li:first-child{
+      @include flexbox();
+      &::after{
+        content: "";
+        display: block;
+        width:1px;
+        height:15px;
+        margin:0 14px;
+        background-color: #333;
+      }
+    }
+  }
+}
