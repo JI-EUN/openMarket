@@ -1,6 +1,6 @@
 .login-page{
   @include flexbox();
-  width: 550px;
+  max-width: 550px;
   margin:100px auto 0;
   flex-direction: column;
   h1{
@@ -11,6 +11,10 @@
   .error-text{
     color:$danger-color;
     margin-top: 26px;
+    display: none;
+    &.show{
+      display: block
+    }
   }
   ul{
     margin-top:30px;

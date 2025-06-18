@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>쇼핑몰</title>
     <link rel="stylesheet" href="./assets/style/css/style.css">
+    <script src="./assets/js/common.js" defer></script>
+    <script src="./assets/js/header.js"defer></script>
 </head>
 <body>
   <div id="page">
@@ -20,12 +22,12 @@
         </div>
         <ul class="header_nav01">
           <li><a href=""><span>장바구니</span></a></li>
-          <li><a href=""><span>로그인</span></a></li>
+          
         </ul>
       </div>
     </header>
 
-    <div>
+    <main>
       <section class="main-banner-wrap">
         <h2 class="text-ir">제품 광고 배너</h2>
       </section>
@@ -37,7 +39,7 @@
         <ul id="product-lists" class="item-lists">
         </ul>
       </div>
-    </div>
+    </main>
 
 
     <footer id="footer">
@@ -106,57 +108,6 @@
       </div>
     </footer>
   </div>
-
-
-  <script>
-    const API_URL = 'https://api.wenivops.co.kr/services/open-market/products/';
-
-    async function fetchProducts() {
-      try {
-        const response = await fetch(API_URL);
-
-        if (!response.ok) {
-          throw new Error('네트워크 응답 오류');
-        }
-
-        const data = await response.json();
-        console.log('받은 데이터:', data);
-
-        // 응답이 배열일 경우 그대로, 객체일 경우 results 배열을 꺼냄
-        const products = Array.isArray(data) ? data : data.results;
-
-        renderProducts(products);
-      } catch (error) {
-        console.error('데이터를 가져오는 중 오류 발생:', error);
-        document.getElementById('product-lists').innerHTML = '<li>상품을 불러오는 데 실패했습니다.</li>';
-      }
-    }
-
-    function renderProducts(products) {
-      const list = document.getElementById('product-lists');
-      list.innerHTML = ''; // 초기화
-
-      products.forEach(product => {
-        const item = document.createElement('li');
-        item.classList.add('product-list')
-        item.innerHTML = `
-            <a href="/detail.html?id=${product.id}">
-              <div class="img-wrap">
-                <img src="${product.image}" alt="">
-              </div>
-              <div>
-                <p class="product-brand">${product.info}</p>
-                <p class="product-name">${product.name}</p>
-                <p class="product-price"><b>${product.price.toLocaleString()}</b>원</p>
-              </div>
-            </a>
-        `;
-        list.appendChild(item);
-      });
-    }
-
-    // 실행
-    fetchProducts();
-  </script>
+  <script type="module" src="./assets/js/index.js"></script>
 </body>
 </html>
