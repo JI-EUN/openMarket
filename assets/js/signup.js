@@ -6,7 +6,6 @@ const agreeBox = document.getElementById('agree-box');
 let currentUserType = 'BUYER'; // 기본값: 구매자
 
 
-
 // 탭 전환 기능
 tabButtons.forEach(button => {
   button.addEventListener('click', function() {
@@ -17,11 +16,13 @@ tabButtons.forEach(button => {
   });
 });
 
+
+//탭별 입력폼 설정
 function tabContent(currentUserType){
   if(currentUserType ==='SELLER'){
     const signForm = document.getElementById('signupForm');
     const bizNumWrap = document.createElement('div');
-    bizNumWrap.classList.add('form-group','seller-only');
+    bizNumWrap.classList.add('form-group','seller-only','has-btn-group');
     bizNumWrap.innerHTML=`
       <label for="biz-num">사업자 등록번호</label>
         <input type="text" id="biz-num" name="company_registration_number"/>
@@ -36,7 +37,7 @@ function tabContent(currentUserType){
     `
     signForm.append(bizNumWrap, storeNameWrap);
 
-    // 이벤트 리스너 추가
+    // 이벤트 리스너 추가 
     const bizCheckBtn = document.getElementById('biz-check-btn');
     bizCheckBtn.addEventListener('click', bizCheck);
   }else{
@@ -45,17 +46,6 @@ function tabContent(currentUserType){
       sellerinput.remove();
     })
   }
-}
-
-//폼 빈값 확인
-function formValueCheck() {
-  let allFilled = true;
-  // 동의 체크박스도 확인
-  if (!agreeBox.checked) {
-    allFilled = false;
-  }
-  // 버튼 활성화/비활성화
-  signupBtn.disabled = !allFilled;
 }
 
 
@@ -91,12 +81,76 @@ document.getElementById('id-check-btn').addEventListener('click', async function
     console.log(error)
   }
 })
-
 //formCheckText
 function formCheckText(text){
   const checkText = document.querySelector('.id-check');
   checkText.innerHTML= text;
 }
+
+//비밀번호체크부분
+const pwInput = document.getElementById('signup-password');
+const pwInputWrap = pwInput.closest('.form-group');
+const pwCheckInput = document.getElementById('signup-password-check');
+function validatePassword(password) {
+  // 8자 이상 체크
+  if (password.length < 8) {
+    return "비밀번호는 8자 이상이어야 합니다.";
+  }
+  // 영소문자 체크 (a-z)
+  if (!/[a-z]/.test(password)) {
+    return "비밀번호는 한개 이상의 영소문자가 필수적으로 들어가야 합니다.";
+  }
+  // 숫자 체크 (0-9)
+  if (!/[0-9]/.test(password)) {
+    return "비밀번호는 한개 이상의 숫자가 필수적으로 들어가야 합니다.";
+  }
+  return null; // 모든 조건을 만족하면 빈 문자열 반환
+}
+pwInput.addEventListener('blur', function(e) {
+  const errorMessage = validatePassword(this.value);
+  //error문구 케이스처리
+  if(errorMessage){
+    //텍스트 이전에 있을시에
+    if(pwInputWrap.querySelector('p')){
+      pwInputWrap.querySelector('p').remove()
+    }
+    pwInputWrap.classList.remove('pw-check');
+    pwInputWrap.classList.add('pw-error');
+    const errorText = document.createElement('p');
+    errorText.innerHTML=errorMessage;
+    pwInputWrap.append(errorText)
+  }else{
+    pwInputWrap.classList.remove('pw-error');
+    pwInputWrap.classList.add('pw-check');
+    //텍스트 이전에 있을시에
+    if(pwInputWrap.querySelector('p')){
+      pwInputWrap.querySelector('p').remove()
+    }
+  }
+})
+
+//비밀번호 추가확인부분
+pwCheckInput.addEventListener('blur', function(e) {
+  const pwcheckVal = this.value;
+  const pwkVal = pwInput.value;
+  if(pwcheckVal===pwkVal && pwInputWrap.classList.contains('pw-check')){
+    //비번일치
+    this.closest('.form-group').classList.remove('pw-error');
+    this.closest('.form-group').classList.add('pw-check');
+    return;
+  }else if(pwcheckVal===''){
+    //빈값일때
+    this.closest('.form-group').classList.remove('pw-check');
+    this.closest('.form-group').classList.remove('pw-error');
+    return;
+  }else if(pwcheckVal!=pwkVal && pwInputWrap.classList.contains('pw-check')){
+    //비번틀릴때
+    this.closest('.form-group').classList.remove('pw-check');
+    this.closest('.form-group').classList.add('pw-error');
+
+  }
+})
+
 
 //사업자등록번호확인
 async function bizCheck(){
@@ -178,6 +232,17 @@ function prepareApiData(commonData, sellerData = null, userType) {
     return apiData;
 }
 
+//동의버튼 체크 관련 버튼활성화
+function formValueCheck() {
+  let allFilled = true;
+  // 동의 체크박스도 확인
+  if (!agreeBox.checked) {
+    allFilled = false;
+  }
+  // 버튼 활성화/비활성화
+  signupBtn.disabled = !allFilled;
+}
+
 
 signupBtn.addEventListener('click', async (e) => {
   e.preventDefault();
@@ -205,7 +270,7 @@ signupBtn.addEventListener('click', async (e) => {
     if (response.ok) {
         // 회원가입 성공
         alert('회원가입이 완료되었습니다!');
-        // window.location.href = '/login';
+        window.location.href = '/login.html';
     } else {
         // 회원가입 실패 - 에러 메시지 처리
         handleApiError(data);
@@ -222,9 +287,9 @@ function handleApiError(errorData) {
   for (let key in errorData) {
     // name 속성이 key와 일치하는 input 찾기
     const input = document.querySelector(`input[name="${key}"]`);
-    if (input) {
+    const parentElement = input.closest('.form-group');
+    if (input && !parentElement.querySelector('p')) {
       // input의 부모 요소 (.form-group) 찾기
-      const parentElement = input.closest('.form-group');
       const errorText = document.createElement('p')
       errorText.classList.add('error-message');
       errorText.innerHTML = errorData[key][0];

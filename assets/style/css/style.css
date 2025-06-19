@@ -293,6 +293,20 @@ footer .company-info dl dd:last-child {
   font-weight: 700;
 }
 
+.icon {
+  display: block;
+  width: 32px;
+  height: 32px;
+}
+.icon.check-icon {
+  position: absolute;
+  right: 16px;
+  top: 43px;
+  width: 28px;
+  height: 28px;
+  background-image: url("../../images/icon-check-off.svg");
+}
+
 button:disabled {
   background-color: #c4c4c4;
   color: #ffffff;
@@ -462,22 +476,85 @@ button:disabled:hover {
   color: white;
 }
 
+.sign-up {
+  padding-bottom: 120px;
+}
 .sign-up .form-group {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
-  gap: 12px;
+  position: relative;
+  gap: 10px 12px;
+  margin-top: 24px;
+}
+.sign-up .form-group:first-child {
+  margin-top: 0;
 }
 .sign-up .form-group label {
   width: 100%;
+  color: #767676;
 }
-.sign-up .form-group input {
+.sign-up .form-group input, .sign-up .form-group select {
   border: 1px solid #C4C4C4;
   height: 54px;
   border-radius: 5px;
+  padding: 0 16px;
   margin: 0;
 }
-.sign-up .form-group button {
+.sign-up .form-group .primary-btn {
   margin: 0;
+}
+.sign-up .form-group.pw-check .check-icon {
+  background-image: url("../../images/icon-check-on.svg");
+}
+.sign-up .form-group.has-btn-group input {
+  width: calc(100% - 134px);
+}
+.sign-up .form-group.has-btn-group button {
+  width: 122px;
+}
+.sign-up .form-group p {
+  color: #EB5757;
+}
+.sign-up .form-group.id-check-ok input {
+  border: 1px solid #21BF48;
+}
+.sign-up .form-group.id-check-ok p {
+  color: #21BF48;
+}
+.sign-up .form-group.id-check-error input {
+  border-color: #EB5757;
+}
+.sign-up .form-group.phon-group select, .sign-up .form-group.phon-group input {
+  width: calc((100% - 24px) / 3);
+}
+.sign-up .terms-agreement {
+  padding: 34px 35px;
+}
+.sign-up .terms-agreement input[type=checkbox] {
+  display: none;
+}
+.sign-up .terms-agreement input[type=checkbox] + label {
+  padding-left: 26px;
+  display: block;
+  position: relative;
+  color: #767676;
+  line-height: 1.25;
+}
+.sign-up .terms-agreement input[type=checkbox] + label::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #C4C4C4;
+  left: 0;
+  top: 2px;
+}
+.sign-up .terms-agreement input[type=checkbox]:checked + label::after {
+  content: "";
+  border: 1px solid #21BF48;
+  background-image: url("./../../images/icon-check.svg");
+  background-repeat: no-repeat;
+  background-position: 50%;
 }/*# sourceMappingURL=style.css.map */
