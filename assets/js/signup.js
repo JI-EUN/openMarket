@@ -1,7 +1,7 @@
-const API_URL = 'https://api.wenivops.co.kr/services/open-market/';
+import { API_CONFIG } from './config.js';
 const tabButtons = document.querySelectorAll('[data-login-tab]');
 const signupBtn = document.querySelector('.signup-btn')
-const inputAll = document.querySelectorAll('input[required]');  
+const inputAll = document.querySelectorAll('input');  
 const agreeBox = document.getElementById('agree-box');
 let currentUserType = 'BUYER'; // 기본값: 구매자
 
@@ -9,24 +9,24 @@ let currentUserType = 'BUYER'; // 기본값: 구매자
 
 // 탭 전환 기능
 tabButtons.forEach(button => {
-    button.addEventListener('click', function() {
-        // 모든 탭에서 on 클래스 제거
-        tabButtons.forEach(btn => btn.classList.remove('on'));
-        // 현재 클릭된 탭에 on 클래스 추가
-        this.classList.add('on');
-        // 현재 선택된 사용자 타입 업데이트
-        currentUserType = this.getAttribute('data-login-tab').toUpperCase();
-    });
+  button.addEventListener('click', function() {
+    // 모든 탭에서 on 클래스 제거
+    tabButtons.forEach(btn => btn.classList.remove('on'));
+    // 현재 클릭된 탭에 on 클래스 추가
+    this.classList.add('on');
+    // 현재 선택된 사용자 타입 업데이트
+    currentUserType = this.getAttribute('data-login-tab').toUpperCase();
+  });
 });
 
 //폼 빈값 확인
 function formValueCheck() {
   let allFilled = true;
-  inputAll.forEach(input => {
-    if (input.value.trim() === '') {
-      allFilled = false;
-    }
-  });
+  // inputAll.forEach(input => {
+  //   if (input.value.trim() === '') {
+  //     allFilled = false;
+  //   }
+  // });
   // 동의 체크박스도 확인
   if (!agreeBox.checked) {
     allFilled = false;
@@ -35,16 +35,79 @@ function formValueCheck() {
   signupBtn.disabled = !allFilled;
 }
 
-//버튼활성화부분
-// document.addEventListener('DOMContentLoaded', function() {
-//   inputAll.forEach(input => {
-//     input.addEventListener('input', formValueCheck);
-//   });
-//   agreeBox.addEventListener('change', formValueCheck);
-//   // 초기 실행
-//   formValueCheck();
-// });
 
+
+//아이디 중복확인
+document.getElementById('id-check-btn').addEventListener('click', async function(){
+  const usernameInput = document.getElementById('signup-id')
+  const username = usernameInput.value;
+  try{
+    const response = await fetch(`${API_CONFIG.API_URL}${API_CONFIG.ENDPOINTS.ID_CHECK}`,{
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+          username: username,
+      })
+    });        
+    const data = await response.json();
+    if (response.ok) {
+      // 아이디 별탈 문제 없음
+      const inputWrap =  usernameInput.closest('.form-group');
+      inputWrap.classList.remove('id-check-error');
+      inputWrap.classList.add('id-check-ok');
+      formCheckText(data.message)
+    } else {
+      const inputWrap =  usernameInput.closest('.form-group');
+      inputWrap.classList.remove('id-check-ok');
+      inputWrap.classList.add('id-check-error');
+      formCheckText(data.error)
+    }
+  }catch(error){
+    console.log(error)
+  }
+})
+
+//formCheckText
+function formCheckText(text){
+  const checkText = document.querySelector('.id-check');
+  checkText.innerHTML= text;
+}
+
+//사업자등록번호확인
+document.getElementById('biz-check-btn').addEventListener('click', async function(){
+  const bizNumInput = document.getElementById('biz-num')
+  const company_registration_number = bizNumInput.value;
+  try{
+    const response = await fetch(`${API_CONFIG.API_URL}${API_CONFIG.ENDPOINTS.BIZ_CHECK}`,{
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        company_registration_number,
+      })
+    });        
+    const data = await response.json();
+    if (response.ok) {
+      // 아이디 별탈 문제 없음
+      const inputWrap =  bizNumInput.closest('.form-group');
+      inputWrap.classList.remove('id-check-error');
+      inputWrap.classList.add('id-check-ok');
+      const checkText = document.querySelector('.biz-check-text');
+      checkText.innerHTML= data.message;
+    } else {
+      const inputWrap =  bizNumInput.closest('.form-group');
+      inputWrap.classList.remove('id-check-ok');
+      inputWrap.classList.add('id-check-error');
+      const checkText = document.querySelector('.biz-check-text');
+      checkText.innerHTML= data.error;
+    }
+  }catch(error){
+    console.log(error)
+  }
+})
 
 
 
@@ -57,7 +120,7 @@ function getCommonFormData() {
     const phoneNumberMiddle = document.getElementById('phone-number-middle').value;
     const phoneNumberBehind = document.getElementById('phone-number-behind').value;
     const phone_number = `${phoneNumberFirst}${phoneNumberMiddle}${phoneNumberBehind}`;
-    
+  
     return {
         username,
         password,
@@ -97,6 +160,10 @@ function prepareApiData(commonData, sellerData = null, userType) {
 
 signupBtn.addEventListener('click', async (e) => {
   e.preventDefault();
+  const errorMessages  = document.querySelectorAll('.error-message')
+  errorMessages.forEach(errorMsg => {
+    errorMsg.remove();
+  });
   const commonFormData = getCommonFormData();
   let sellerFormData = null;
   if (currentUserType === 'SELLER') {
@@ -106,7 +173,7 @@ signupBtn.addEventListener('click', async (e) => {
   const apiData = prepareApiData(commonFormData, sellerFormData, currentUserType);
   let apiSignType = currentUserType.toLowerCase();
   try{
-    const response = await fetch(`${API_URL}accounts/${apiSignType}/signup/`, {
+    const response = await fetch(`${API_CONFIG.API_URL}/accounts/${apiSignType}/signup/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -132,15 +199,45 @@ signupBtn.addEventListener('click', async (e) => {
 
 function handleApiError(errorData) {
   for (let key in errorData) {
-    
     // name 속성이 key와 일치하는 input 찾기
     const input = document.querySelector(`input[name="${key}"]`);
     if (input) {
       // input의 부모 요소 (.form-group) 찾기
       const parentElement = input.closest('.form-group');
       const errorText = document.createElement('p')
+      errorText.classList.add('error-message');
       errorText.innerHTML = errorData[key][0];
       parentElement.appendChild(errorText)
     }
   }
 }
+
+function clearErrorMessage(input) {
+  const parentElement = input.closest('.form-group');
+  if (parentElement) {
+    // 해당 부모 요소 내의 모든 에러 메시지 제거
+    const errorMessages = parentElement.querySelectorAll('.error-message');
+    errorMessages.forEach(errorMsg => {
+      errorMsg.remove();
+    });
+  }
+}
+
+function addFocusEventListeners() {
+  const inputs = document.querySelectorAll('input, select');
+  inputs.forEach(input => {
+    input.addEventListener('focus', function() {
+      clearErrorMessage(this);
+    });
+  });
+}
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  //form 버튼활성화
+  agreeBox.addEventListener('change', formValueCheck);
+  // 초기 실행
+  formValueCheck();
+  //input-wrap errortext 지우기
+  addFocusEventListeners();
+});

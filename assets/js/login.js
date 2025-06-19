@@ -1,4 +1,4 @@
-const API_URL = 'https://api.wenivops.co.kr/services/open-market/';
+import { API_CONFIG } from './config.js';
 
 // 현재 선택된 탭 추적
 let currentUserType = 'BUYER'; // 기본값: 구매자
@@ -36,7 +36,7 @@ loginForm.addEventListener('submit', async function(e) {
     }
 
     try {
-    const response = await fetch(`${API_URL}accounts/login/`, {
+    const response = await fetch(`${API_CONFIG.API_URL}/accounts/login/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
