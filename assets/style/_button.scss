@@ -1,3 +1,12 @@
+button{
+  &:disabled{
+    background-color: #c4c4c4;
+    color:$white-color;
+    &:hover{
+      background-color: #c4c4c4;
+    }
+  }
+}
 .primary-btn{
  @include button()
 }

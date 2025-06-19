@@ -293,6 +293,14 @@ footer .company-info dl dd:last-child {
   font-weight: 700;
 }
 
+button:disabled {
+  background-color: #c4c4c4;
+  color: #ffffff;
+}
+button:disabled:hover {
+  background-color: #c4c4c4;
+}
+
 .primary-btn {
   background-color: #21BF48;
   color: #fff;
@@ -452,4 +460,24 @@ footer .company-info dl dd:last-child {
 .product-container .product-action .buttons button.cart-btn {
   background-color: #444;
   color: white;
+}
+
+.sign-up .form-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.sign-up .form-group label {
+  width: 100%;
+}
+.sign-up .form-group input {
+  border: 1px solid #C4C4C4;
+  height: 54px;
+  border-radius: 5px;
+  margin: 0;
+}
+.sign-up .form-group button {
+  margin: 0;
 }/*# sourceMappingURL=style.css.map */

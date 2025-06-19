@@ -14,7 +14,14 @@ if(!accessToken){
   logoutElem.classList.add('login-link-btn')
   logoutElem.innerHTML= `<button onclick="logout()"><span>로그아웃</span></button>`;
   headerNav.append(logoutElem)
-  console.log(userType)
+  switch (userType) {
+    case 'SELLER':
+      const sellerCenter = document.createElement('li');
+      sellerCenter.classList.add('seller-center-btn')
+      sellerCenter.innerHTML= `<a href="/seller-center.html"><span>판매자센터</span></a>`;
+      headerNav.append(sellerCenter)
+      break;
+  }
 }
 
 

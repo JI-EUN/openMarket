@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>쇼핑몰 로그인</title>
+    <link rel="stylesheet" href="./assets/style/css/style.css">
+</head>
+<body>
+  <div class="login-page sign-up">
+    <h1><a href="./index.html"><img src="./assets/images/Logo-hodu.png" alt="호두 로고"></a></h1>
+    <section>
+      <h2 class="text-ir">회원가입 페이지</h2>
+      <div class="tab-wrap">
+        <div class="tab-btns">
+          <button type="button" class="on" data-login-tab="buyer">구매회원가입</button>
+          <button type="button" data-login-tab="seller">판매회원가입</button>
+        </div>
+        <div class="tab-content">
+          <form id="signupForm">
+            <div class="form-group">
+              <label for="signup-username">아이디</label>
+              <input type="text" id="signup-username" name="username" required>
+              <button class="primary-btn" id="id-check-btn">중복확인</button>
+            </div>
+            <div class="id-check">20자 이내의 영어 대소문자, 숫자만 가능</div>
+            <div class="form-group">
+              <label for="signup-password">비밀번호</label>
+              <input type="password" id="signup-password" name="password" required>
+            </div>
+            <div class="form-group">
+              <label for="signup-password-check">비밀번호</label>
+              <input type="password" id="signup-password-check" name="password" required>
+            </div>
+            <div class="form-group">
+              <label for="signup-name">이름</label>
+              <input type="text" id="signup-name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="signup-phone">전화번호 </label>
+              <select name="phone-number-front" id="phone-number-front">
+                <option value="010">010</option>
+                <option value="011">011</option>
+              </select>
+              <input type="text" name="phone-number-middle" id="phone-number-middle"/>
+              <input type="text" id="phone-number-behind" name="phone-number-behind" required>
+            </div>
+            <div id="signup-message"></div>
+
+
+            <!--사업자인경우에만 추가-->
+            <div class="form-group">
+              <label for="biz-num">사업자 등록번호</label>
+              <input type="text" id="biz-num" name="biz_num" required>
+              <button class="primary-btn" id="biz-check-btn">중복확인</button>
+            </div>
+            <div class="form-group">
+              <label for="store-name">스토어 이름</label>
+              <input type="text" id="store-name" name="name" required>
+            </div>
+
+          </form>
+        </div>
+      </div>
+      <div>
+        <input type="checkbox" id="agree-box"/>
+        <label for="agree-box">
+          호두샵의 <b>이용약관</b>및 <b>개인정보처리방침</b>에 대한 내용을 확인하였고 동의합니다.
+        </label>
+      </div>
+      <button type="submit" class="signup-btn primary-btn" >가입하기</button>
+    </section>
+  </div>
+  <script type="module" src="./assets/js/signup.js"></script>
+</body>
+</html>

@@ -36,50 +36,37 @@ loginForm.addEventListener('submit', async function(e) {
     }
 
     try {
-      const response = await fetch(`${API_URL}accounts/login/`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            username: username,
-            password: password,
-        })
-      });
-      const data = await response.json();
-      if (response.ok) {
-        // 토큰과 사용자 타입 저장
-        // window.currentTokens = {
-        //     access: data.access,
-        //     refresh: data.refresh,
-        //     userType: data.user_type // 사용자 타입도 함께 저장
-        // };
-        if(data.user.user_type === currentUserType){
-          localStorage.setItem('accessToken', data.access);
-          localStorage.setItem('refreshToken', data.refresh);
-          localStorage.setItem('userInfo', JSON.stringify(data.user));
-          window.location.href = './index.html';
-        }else{
-          showError('로그인정보를 확인해주세요.');
-        }
-          
-      } else {
-            // 에러 메시지 처리
-            let errorMessage = '로그인에 실패했습니다.';
-            if (data.error) {
-                errorMessage = data.error;
-            } else if (data.message) {
-                errorMessage = data.message;
-            }
-            // 사용자 타입별 맞춤 에러 메시지
-            if (currentUserType === 'SELLER' && response.status === 403) {
-                errorMessage = '판매자 계정이 아니거나 승인되지 않은 계정입니다.';
-            } else if (currentUserType === 'BUYER' && response.status === 403) {
-                errorMessage = '구매자 계정으로 로그인할 수 없습니다.';
-            }
-            showError(errorMessage);
-        }
+    const response = await fetch(`${API_URL}accounts/login/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+          username: username,
+          password: password,
+      })
+    });
+    const data = await response.json();
+    if (response.ok) {
+      if(data.user.user_type === currentUserType){
+        localStorage.setItem('accessToken', data.access);
+        localStorage.setItem('refreshToken', data.refresh);
+        localStorage.setItem('userInfo', JSON.stringify(data.user));
+        window.location.href = './index.html';
+      }else{
+        showError('로그인정보를 확인해주세요.');
+      }
         
+    } else {
+      // 에러 메시지 처리
+      let errorMessage = '로그인에 실패했습니다.';
+      if (data.error) {
+          errorMessage = data.error;
+      } else if (data.message) {
+          errorMessage = data.message;
+      }
+      showError(errorMessage);
+      }
     } catch (error) {
       showError('네트워크 오류가 발생했습니다.');
     }
