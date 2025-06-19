@@ -10,23 +10,46 @@ let currentUserType = 'BUYER'; // 기본값: 구매자
 // 탭 전환 기능
 tabButtons.forEach(button => {
   button.addEventListener('click', function() {
-    // 모든 탭에서 on 클래스 제거
     tabButtons.forEach(btn => btn.classList.remove('on'));
-    // 현재 클릭된 탭에 on 클래스 추가
     this.classList.add('on');
-    // 현재 선택된 사용자 타입 업데이트
     currentUserType = this.getAttribute('data-login-tab').toUpperCase();
+    tabContent(currentUserType)
   });
 });
+
+function tabContent(currentUserType){
+  if(currentUserType ==='SELLER'){
+    const signForm = document.getElementById('signupForm');
+    const bizNumWrap = document.createElement('div');
+    bizNumWrap.classList.add('form-group','seller-only');
+    bizNumWrap.innerHTML=`
+      <label for="biz-num">사업자 등록번호</label>
+        <input type="text" id="biz-num" name="company_registration_number"/>
+        <button class="primary-btn" id="biz-check-btn" type="button">인증</button>
+      <p class="biz-check-text"></p>
+    `
+    const storeNameWrap =  document.createElement('div');
+    storeNameWrap.classList.add('form-group','seller-only');
+    storeNameWrap.innerHTML = `
+      <label for="store-name">스토어 이름</label>
+      <input type="text" id="store-name" name="store_name"/>
+    `
+    signForm.append(bizNumWrap, storeNameWrap);
+
+    // 이벤트 리스너 추가
+    const bizCheckBtn = document.getElementById('biz-check-btn');
+    bizCheckBtn.addEventListener('click', bizCheck);
+  }else{
+    const sellerInputs = document.querySelectorAll('.seller-only');
+    sellerInputs.forEach(sellerinput=>{
+      sellerinput.remove();
+    })
+  }
+}
 
 //폼 빈값 확인
 function formValueCheck() {
   let allFilled = true;
-  // inputAll.forEach(input => {
-  //   if (input.value.trim() === '') {
-  //     allFilled = false;
-  //   }
-  // });
   // 동의 체크박스도 확인
   if (!agreeBox.checked) {
     allFilled = false;
@@ -76,7 +99,7 @@ function formCheckText(text){
 }
 
 //사업자등록번호확인
-document.getElementById('biz-check-btn').addEventListener('click', async function(){
+async function bizCheck(){
   const bizNumInput = document.getElementById('biz-num')
   const company_registration_number = bizNumInput.value;
   try{
@@ -107,9 +130,7 @@ document.getElementById('biz-check-btn').addEventListener('click', async functio
   }catch(error){
     console.log(error)
   }
-})
-
-
+}
 
 // 공통 필드 데이터 수집
 function getCommonFormData() {
@@ -131,11 +152,11 @@ function getCommonFormData() {
 
 // 판매자 전용 필드 데이터 수집
 function getSellerFormData() {
-    const company_registration_number = document.getElementById('company-registration-number').value;
+    const company_registration_number = document.getElementById('biz-num').value;
     const store_name = document.getElementById('store-name').value;
     return {
-        company_registration_number,
-        store_name
+      company_registration_number,
+      store_name
     };
 }
 
