@@ -44,35 +44,29 @@ signupBtn.addEventListener('click', async (e) => {
       const data = await response.json();
       
       if (response.ok) {
-          setTimeout(() => {
-              switchTab('login');
-              // 회원가입한 아이디를 로그인 폼에 자동 입력
-              document.getElementById('login-username').value = username;
-          }, 2000);
+          
       } else {
-          // 회원가입 실패 - 에러 메시지 처리
-          let errorMessage = '';
-          if (typeof data === 'string') {
-              errorMessage = data;
-          } else if (data.error) {
-              errorMessage = data.error;
-          } else {
-              // 필드별 에러 메시지 처리
-              const errors = [];
-              for (const [field, messages] of Object.entries(data)) {
-                  if (Array.isArray(messages)) {
-                      errors.push(...messages);
-                  } else {
-                      errors.push(messages);
-                  }
-              }
-              errorMessage = errors.join('<br>');
-          }
-          messageDiv.innerHTML = `<div class="error-message">${errorMessage}</div>`;
+        // 회원가입 실패 - 에러 메시지 처리
+        let errorMessage = '';
+        if (typeof data === 'string') {
+            errorMessage = data;
+        } else if (data.error) {
+            errorMessage = data.error;
+        } else {
+            // 필드별 에러 메시지 처리
+            const errors = [];
+            for (const [field, messages] of Object.entries(data)) {
+                if (Array.isArray(messages)) {
+                    errors.push(...messages);
+                } else {
+                    errors.push(messages);
+                }
+            }
+            errorMessage = errors.join('<br>');
+        }
       }
   } catch (error) {
       console.error('회원가입 요청 중 오류 발생:', error);
-      messageDiv.innerHTML = '<div class="error-message">서버 연결에 실패했습니다.</div>';
   }
 });
 
