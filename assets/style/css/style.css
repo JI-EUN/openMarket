@@ -62,6 +62,16 @@ a {
   color: inherit;
 }
 
+input {
+  width: 100%;
+}
+
+button {
+  padding: 0;
+  background: none;
+  border: none;
+}
+
 .text-ir {
   position: absolute;
   width: 1px;
@@ -78,6 +88,24 @@ a {
 .container {
   max-width: 1280px;
   margin: 0 auto;
+}
+
+.sign-logo {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.sign-layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 550px;
+  margin: 70px auto 0;
+  flex-direction: column;
+}
+.sign-layout form input:focus, .sign-layout form select:focus {
+  border-color: #21BF48;
+  outline: none;
 }
 
 footer {
@@ -298,13 +326,18 @@ footer .company-info dl dd:last-child {
   width: 32px;
   height: 32px;
 }
-.icon.check-icon {
+.icon.pw-check-icon {
   position: absolute;
   right: 16px;
-  top: 43px;
+  top: 39px;
   width: 28px;
   height: 28px;
   background-image: url("../../images/icon-check-off.svg");
+}
+.icon.close-icon {
+  background-image: url("../../images/icon-delete.svg");
+  background-repeat: no-repeat;
+  background-position: 50%;
 }
 
 button {
@@ -316,6 +349,10 @@ button:disabled {
 }
 button:disabled:hover {
   background-color: #c4c4c4;
+}
+
+.btn {
+  text-align: center;
 }
 
 .primary-btn {
@@ -333,19 +370,22 @@ button:disabled:hover {
   background-color: #199438;
 }
 
-.login-page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 550px;
-  margin: 100px auto 0;
-  flex-direction: column;
+.gray-line-btn {
+  background-color: #ffffff;
+  color: #767676;
+  font-size: 1rem;
+  padding: 17px 30px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.2s;
+  border: 1px solid #C4C4C4;
 }
-.login-page h1 {
-  margin-bottom: 70px;
-  display: inline-block;
-  text-align: center;
+.gray-line-btn:hover {
+  background-color: #e6e6e6;
 }
+
 .login-page .error-text {
   color: #EB5757;
   margin-top: 26px;
@@ -372,6 +412,21 @@ button:disabled:hover {
   height: 15px;
   margin: 0 14px;
   background-color: #333;
+}
+.login-page .login-form-content input {
+  width: 100%;
+  height: 60px;
+  border-width: 0 0 1px 0;
+  border-bottom: 1px solid #C4C4C4;
+  padding: 0 6px;
+  font-size: 1rem;
+  margin-top: 6px;
+}
+.login-page .login-form-content input:first-child {
+  margin-top: 0;
+}
+.login-page .login-form-content button {
+  margin-top: 36px;
 }
 
 .tab-wrap {
@@ -400,26 +455,115 @@ button:disabled:hover {
   border-radius: 0 0 10px 10px;
   border-top: none;
 }
-.tab-wrap .tab-content input {
-  width: 100%;
-  height: 60px;
-  border-width: 0 0 1px 0;
-  border-bottom: 1px solid #C4C4C4;
-  padding: 0;
-  font-size: 1rem;
-  margin-top: 6px;
-}
-.tab-wrap .tab-content input:first-child {
-  margin-top: 0;
-}
-.tab-wrap .tab-content button {
-  margin-top: 36px;
-}
 
 .main-banner-wrap {
   background-color: gray;
   height: 500px;
   margin-bottom: 80px;
+}
+
+.sign-up {
+  padding-bottom: 120px;
+}
+.sign-up .form-group {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+  gap: 10px 12px;
+  margin-top: 24px;
+}
+.sign-up .form-group:first-child {
+  margin-top: 0;
+}
+.sign-up .form-group label {
+  width: 100%;
+  color: #767676;
+}
+.sign-up .form-group input, .sign-up .form-group select {
+  border: 1px solid #C4C4C4;
+  height: 54px;
+  border-radius: 5px;
+  padding: 0 16px;
+  margin: 0;
+}
+.sign-up .form-group .primary-btn {
+  margin: 0;
+}
+.sign-up .form-group.pw-check .pw-check-icon {
+  background-image: url("../../images/icon-check-on.svg");
+}
+.sign-up .form-group.has-btn-group input {
+  width: calc(100% - 134px);
+}
+.sign-up .form-group.has-btn-group button {
+  width: 122px;
+}
+.sign-up .form-group p {
+  color: #EB5757;
+}
+.sign-up .form-group.id-check-ok p {
+  color: #21BF48;
+}
+.sign-up .form-group.id-check-error input, .sign-up .form-group.pw-error input {
+  border-color: #EB5757;
+}
+.sign-up .form-group.phon-group select, .sign-up .form-group.phon-group input {
+  width: calc((100% - 24px) / 3);
+}
+.sign-up .terms-agreement {
+  padding: 34px 35px;
+}
+.sign-up .terms-agreement input[type=checkbox] {
+  display: none;
+}
+.sign-up .terms-agreement input[type=checkbox] + label {
+  padding-left: 26px;
+  display: block;
+  position: relative;
+  color: #767676;
+  line-height: 1.25;
+}
+.sign-up .terms-agreement input[type=checkbox] + label::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #C4C4C4;
+  left: 0;
+  top: 2px;
+}
+.sign-up .terms-agreement input[type=checkbox]:checked + label::after {
+  content: "";
+  border: 1px solid #21BF48;
+  background-image: url("./../../images/icon-check.svg");
+  background-repeat: no-repeat;
+  background-position: 50%;
+}
+
+.product-detail-page {
+  margin-top: 80px;
+}
+.product-detail-page .product-tabs {
+  margin-top: 140px;
+}
+.product-detail-page .product-tabs .tab-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.product-detail-page .product-tabs .tab-menu button {
+  flex-grow: 1;
+  height: 60px;
+  border-bottom: 6px solid #C4C4C4;
+  color: #767676;
+  font-size: 1.125rem;
+}
+.product-detail-page .product-tabs .tab-menu button.active {
+  font-weight: 600;
+  color: #21BF48;
+  border-color: #21BF48;
 }
 
 .product-container {
@@ -458,14 +602,6 @@ button:disabled:hover {
 .product-container .product-action .delivery {
   color: #777;
 }
-.product-container .product-action .quantity {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-.product-container .product-action .quantity input {
-  width: 50px;
-}
 .product-container .product-action .total-price {
   font-weight: bold;
   font-size: 1.2rem;
@@ -478,86 +614,72 @@ button:disabled:hover {
   background-color: #444;
   color: white;
 }
-
-.sign-up {
-  padding-bottom: 120px;
-}
-.sign-up .form-group {
+.product-container .product-action .quantity {
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-wrap: wrap;
-  position: relative;
-  gap: 10px 12px;
-  margin-top: 24px;
 }
-.sign-up .form-group:first-child {
-  margin-top: 0;
-}
-.sign-up .form-group label {
-  width: 100%;
-  color: #767676;
-}
-.sign-up .form-group input, .sign-up .form-group select {
+.product-container .product-action .quantity button {
+  width: 48px;
+  height: 48px;
   border: 1px solid #C4C4C4;
-  height: 54px;
-  border-radius: 5px;
-  padding: 0 16px;
+}
+.product-container .product-action .quantity button.quantity-minus {
+  border-radius: 5px 0 0 5px;
+  border-right: none;
+}
+.product-container .product-action .quantity button.quantity-plus {
+  border-radius: 0 5px 5px 0;
+  border-left: none;
+}
+.product-container .product-action .quantity input {
+  width: 52px;
+  height: 48px;
+  border: 1px solid #C4C4C4;
+  text-align: center;
+  font-size: 1.125rem;
+}
+.product-container .product-action .quantity input::-webkit-outer-spin-button, .product-container .product-action .quantity input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
   margin: 0;
 }
-.sign-up .form-group .primary-btn {
-  margin: 0;
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.sign-up .form-group.pw-check .check-icon {
-  background-image: url("../../images/icon-check-on.svg");
-}
-.sign-up .form-group.has-btn-group input {
-  width: calc(100% - 134px);
-}
-.sign-up .form-group.has-btn-group button {
-  width: 122px;
-}
-.sign-up .form-group p {
-  color: #EB5757;
-}
-.sign-up .form-group.id-check-ok input {
-  border: 1px solid #21BF48;
-}
-.sign-up .form-group.id-check-ok p {
-  color: #21BF48;
-}
-.sign-up .form-group.id-check-error input {
-  border-color: #EB5757;
-}
-.sign-up .form-group.phon-group select, .sign-up .form-group.phon-group input {
-  width: calc((100% - 24px) / 3);
-}
-.sign-up .terms-agreement {
-  padding: 34px 35px;
-}
-.sign-up .terms-agreement input[type=checkbox] {
-  display: none;
-}
-.sign-up .terms-agreement input[type=checkbox] + label {
-  padding-left: 26px;
-  display: block;
+.modal-overlay .modal-popup {
+  width: 360px;
+  padding: 40px 75px;
+  background-color: #ffffff;
+  border: 1px solid #C4C4C4;
   position: relative;
-  color: #767676;
+}
+.modal-overlay .close-btn {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  right: 18px;
+  top: 18px;
+}
+.modal-overlay p {
+  text-align: center;
   line-height: 1.25;
 }
-.sign-up .terms-agreement input[type=checkbox] + label::after {
-  content: "";
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  border: 1px solid #C4C4C4;
-  left: 0;
-  top: 2px;
+.modal-overlay .btns {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
-.sign-up .terms-agreement input[type=checkbox]:checked + label::after {
-  content: "";
-  border: 1px solid #21BF48;
-  background-image: url("./../../images/icon-check.svg");
-  background-repeat: no-repeat;
-  background-position: 50%;
+.modal-overlay .btns .btn {
+  flex-grow: 1;
+  height: 40px;
+  padding: 0;
+  align-content: center;
 }/*# sourceMappingURL=style.css.map */

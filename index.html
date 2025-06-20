@@ -6,23 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>쇼핑몰</title>
     <link rel="stylesheet" href="./assets/style/css/style.css">
-    <script src="./assets/js/common.js" defer></script>
+    <script src="./assets/js/utils/common.js" defer></script>
     <script src="./assets/js/header.js"defer></script>
 </head>
 <body>
   <div id="page">
     <header id="header">
       <div class="container">
-        <div>
-          <h1><a href=""><img src="./assets/images/Logo-hodu.png" alt="호두 로고"></a></h1>
+
+        <div class="header-main">
+          <h1><a href="/"><img src="./assets/images/Logo-hodu.png" alt="호두 로고"></a></h1>
           <form action="">
             <input type="text" placeholder="상품을 검색해보세요!"/>
             <button class="text-ir search icon">검색</button>
           </form>
         </div>
-        <ul class="header_nav01">
+
+        <ul class="header-user">
           <li><a href=""><span>장바구니</span></a></li>
-          
         </ul>
       </div>
     </header>
@@ -108,6 +109,6 @@
       </div>
     </footer>
   </div>
-  <script type="module" src="./assets/js/index.js"></script>
+  <script type="module" src="./assets/js/pages/index.js"></script>
 </body>
 </html>

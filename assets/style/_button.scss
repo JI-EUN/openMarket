@@ -8,6 +8,13 @@ button{
     }
   }
 }
+.btn{
+  text-align: center;
+}
 .primary-btn{
  @include button()
+}
+.gray-line-btn{
+ @include button($bgColor:#ffffff,$textColor:$font-gray);
+ border:1px solid $line-gray;
 }

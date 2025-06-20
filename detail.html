@@ -6,31 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>쇼핑몰</title>
     <link rel="stylesheet" href="./assets/style/css/style.css">
+    <script src="./assets/js/utils/common.js" defer></script>
+    <script src="./assets/js/header.js"defer></script>
 </head>
 <body>
   <div id="page">
     <header id="header">
       <div class="container">
-        <div>
-          <h1><a href=""><img src="./assets/images/Logo-hodu.png" alt="호두 로고"></a></h1>
+
+        <div class="header-main">
+          <h1><a href="/"><img src="./assets/images/Logo-hodu.png" alt="호두 로고"></a></h1>
           <form action="">
             <input type="text" placeholder="상품을 검색해보세요!"/>
             <button class="text-ir search icon">검색</button>
           </form>
         </div>
-        <ul class="header_nav01">
+
+        <ul class="header-user">
           <li><a href=""><span>장바구니</span></a></li>
-          <li><a href=""><span>로그인</span></a></li>
         </ul>
       </div>
     </header>
 
-    <div class="container">
-      <section>
-        <h2 class="text-ir">제품 상세페이지</h2>
-        <div id="product-detail" class="product-container">불러오는 중...</div>
+    <main class="product-detail-page container">
+      <section id="product-detail" class="product-container">
+        <h2 class="text-ir">제품 정보</h2>
       </section>
-    </div>
+      <section class="product-tabs">
+          <h2 class="text-ir">제품상세정보</h2>
+          <div class="tab-menu">
+            <button class="active" data-tab-index="detail">제품상세</button>
+            <button class="" data-tab-index="detail">리뷰</button>
+            <button class="" data-tab-index="detail">Q&A</button>
+            <button class="" data-tab-index="detail">반품/교환정보</button>
+          </div>
+          <div class="tab-conent"></div>
+        </section>
+    </main>
 
 
     <footer id="footer">
@@ -100,6 +112,8 @@
     </footer>
   </div>
 
-  <script type="module" src="./assets/js/detail.js"></script>
+
+
+  <script type="module" src="./assets/js/pages/detail.js"></script>
 </body>
 </html>

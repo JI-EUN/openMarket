@@ -1,4 +1,4 @@
-import { API_CONFIG } from './config.js';
+import { API_CONFIG } from '../api/config.js';
 
 // 현재 선택된 탭 추적
 let currentUserType = 'BUYER'; // 기본값: 구매자
@@ -7,21 +7,21 @@ let currentUserType = 'BUYER'; // 기본값: 구매자
 const tabButtons = document.querySelectorAll('[data-login-tab]');
 
 tabButtons.forEach(button => {
-    button.addEventListener('click', function() {
-        // 모든 탭에서 on 클래스 제거
-        tabButtons.forEach(btn => btn.classList.remove('on'));
-        // 현재 클릭된 탭에 on 클래스 추가
-        this.classList.add('on');
-        
-        // 현재 선택된 사용자 타입 업데이트
-        currentUserType = this.getAttribute('data-login-tab').toUpperCase();
-        //console.log('선택된 사용자 타입:', currentUserType);
-    });
+  button.addEventListener('click', function() {
+    // 모든 탭에서 on 클래스 제거
+    tabButtons.forEach(btn => btn.classList.remove('on'));
+    // 현재 클릭된 탭에 on 클래스 추가
+    this.classList.add('on');
+    
+    // 현재 선택된 사용자 타입 업데이트
+    currentUserType = this.getAttribute('data-login-tab').toUpperCase();
+    //console.log('선택된 사용자 타입:', currentUserType);
+  });
 });
 
 // 로그인 폼 처리
-const loginForm = document.getElementById('loginForm');
-const errorText = document.getElementById('errorText');
+const loginForm = document.getElementById('login-form');
+const errorText = document.getElementById('error-text');
 
 loginForm.addEventListener('submit', async function(e) {
     e.preventDefault();

@@ -1,5 +1,3 @@
-
-
 // localStorage에서 사용자 정보 불러오기
 function getUserInfo() {
     const userInfo = localStorage.getItem('userInfo');

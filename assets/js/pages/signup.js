@@ -1,4 +1,4 @@
-import { API_CONFIG } from './config.js';
+import { API_CONFIG } from '../api/config.js';
 const tabButtons = document.querySelectorAll('[data-login-tab]');
 const signupBtn = document.querySelector('.signup-btn')
 const inputAll = document.querySelectorAll('input');  

@@ -8,30 +8,28 @@
     <link rel="stylesheet" href="./assets/style/css/style.css">
 </head>
 <body>
-  <div class="login-page">
-    <h1><a href="./index.html"><img src="./assets/images/Logo-hodu.png" alt="호두 로고"></a></h1>
-    <section>
-      <h2 class="text-ir">로그인 페이지</h2>
-      <div class="tab-wrap">
-        <div class="tab-btns">
-          <button type="button" class="on" data-login-tab="buyer">구매회원 로그인</button>
-          <button type="button" data-login-tab="seller">판매회원 로그인</button>
-        </div>
-        <div class="tab-content">
-          <form id="loginForm">
-            <input type="text" placeholder="아이디" name="id" id="userId" />
-            <input type="password" placeholder="비밀번호" name="pw" id="userPw" autoComplete="off" />
-            <p class="error-text" id="errorText"></p>
-            <button class="primary-btn" type="submit">로그인</button>
-          </form>
-        </div>
+  <h1 class="sign-logo"><a href="./index.html"><img src="./assets/images/Logo-hodu.png" alt="호두 로고"></a></h1>
+  <section class="login-page sign-layout">
+    <h2 class="text-ir">로그인 페이지</h2>
+    <div class="tab-wrap">
+      <div class="tab-btns">
+        <button type="button" class="on" data-login-tab="buyer">구매회원 로그인</button>
+        <button type="button" data-login-tab="seller">판매회원 로그인</button>
       </div>
-      <ul class="login-links">
-        <li><a href="./signup.html">회원가입</a></li>
-        <li><a href="./find-password.html">비밀번호 찾기</a></li>
-      </ul>
-    </section>
-  </div>
-  <script type="module" src="./assets/js/login.js"></script>
+      <div class="tab-content">
+        <form id="login-form" class="login-form-content">
+          <input type="text" placeholder="아이디" name="id" id="userId" />
+          <input type="password" placeholder="비밀번호" name="pw" id="userPw" autoComplete="off" />
+          <p class="error-text" id="error-text"></p>
+          <button class="primary-btn" type="submit">로그인</button>
+        </form>
+      </div>
+    </div>
+    <ul class="login-links">
+      <li><a href="./signup.html">회원가입</a></li>
+      <li><a href="./find-password.html">비밀번호 찾기</a></li>
+    </ul>
+  </section>
+  <script type="module" src="./assets/js/pages/login.js"></script>
 </body>
 </html>

@@ -25,7 +25,7 @@
     }
     //비번 icon
     &.pw-check{
-      .check-icon{
+      .pw-check-icon{
         background-image: url('../../images/icon-check-on.svg');
       }
     }
@@ -44,14 +44,13 @@
 
     //id문제없을시
     &.id-check-ok{
-      input{
-        border:1px solid $primary-color;
-      }
       p{
         color:$primary-color;
       }
     }
-    &.id-check-error{
+    //오류시 bordercolor
+    &.id-check-error,
+    &.pw-error{
       input{
         border-color: $danger-color;;
       }

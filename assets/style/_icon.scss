@@ -2,12 +2,17 @@
   display: block;
   width: 32px;
   height: 32px;
-  &.check-icon{
+  &.pw-check-icon{
     position: absolute;
     right:16px;
-    top:43px;
+    top:39px;
     width: 28px;
     height: 28px;
     background-image: url('../../images/icon-check-off.svg');
+  }
+  &.close-icon{
+    background-image: url('../../images/icon-delete.svg');
+    background-repeat: no-repeat;
+    background-position: 50%;
   }
 }

@@ -2,3 +2,24 @@
   max-width: 1280px;
   margin:0 auto;
 }
+
+
+//로그인관련 layout 공통부분
+.sign-logo{
+  text-align: center;
+  margin-top:100px;
+}
+.sign-layout{
+  @include flexbox();
+  max-width: 550px;
+  margin:70px auto 0;
+  flex-direction: column;
+  form{
+    input,select{
+      &:focus{
+        border-color:$primary-color;
+        outline: none;
+      }
+    }
+  }
+}

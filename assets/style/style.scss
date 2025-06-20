@@ -13,7 +13,10 @@
 
 //main
 @import './main-banner';
-@import './product-detail';
 
 //회원가입
 @import './sign-up';
+
+//제품상세
+@import './product-detail';
+@import './_cart-modal';

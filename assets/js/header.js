@@ -1,4 +1,4 @@
-const headerNav = document.querySelector('.header_nav01')
+const headerNav = document.querySelector('.header-user')
 const userType = JSON.parse(localStorage.getItem('userInfo'))?.user_type;
 const accessToken = localStorage.getItem('accessToken');
 
