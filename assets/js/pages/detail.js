@@ -129,6 +129,7 @@ function orderBtn(){
     `
     body.append(modalPop);
     document.querySelector('.modal-overlay').addEventListener('click', popClose);
+    document.addEventListener('keydown', handleEscKey);
   }
 }
 function popClose(e){   
@@ -137,5 +138,13 @@ function popClose(e){
     document.querySelector('.modal-overlay').remove()
   }
 }
-
+function handleEscKey(e) {
+  if (e.key === 'Escape') {
+    const modalOverlay = document.querySelector('.modal-overlay');
+    if (modalOverlay) {
+      // 기존 popClose 함수 재사용
+      popClose({ target: modalOverlay });
+    }
+  }
+}
 fetchProductDetail();
