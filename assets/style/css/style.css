@@ -307,6 +307,9 @@ footer .company-info dl dd:last-child {
   background-image: url("../../images/icon-check-off.svg");
 }
 
+button {
+  cursor: pointer;
+}
 button:disabled {
   background-color: #c4c4c4;
   color: #ffffff;
