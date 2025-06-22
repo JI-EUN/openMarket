@@ -659,6 +659,12 @@ button:disabled:hover {
 .sign-up .form-group.phon-group select, .sign-up .form-group.phon-group input {
   width: calc((100% - 24px) / 3);
 }
+.sign-up .form-group.phon-group select {
+  -webkit-appearance: none;
+  background-image: url("../../images/icon-down-arrow.svg");
+  background-repeat: no-repeat;
+  background-position: center right 12px;
+}
 .sign-up .terms-agreement {
   padding: 34px 35px;
 }
@@ -711,6 +717,11 @@ button:disabled:hover {
   font-weight: 600;
   color: #21BF48;
   border-color: #21BF48;
+}
+.product-detail-page .product-tabs .tab-conent {
+  padding: 60px 0;
+  text-align: center;
+  font-size: 1.5rem;
 }
 
 .product-container {

@@ -61,6 +61,12 @@
       select,input{
         width: calc((100% - 24px)/3);
       }
+      select{
+        -webkit-appearance: none;
+        background-image: url('../../images/icon-down-arrow.svg');
+        background-repeat: no-repeat;
+        background-position: center right 12px;
+      }
     }
   }
 

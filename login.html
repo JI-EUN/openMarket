@@ -1,35 +1,48 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>쇼핑몰 로그인</title>
-    <link rel="stylesheet" href="./assets/style/css/style.css">
-</head>
-<body>
-  <h1 class="sign-logo"><a href="./index.html"><img src="./assets/images/Logo-hodu.png" alt="호두 로고"></a></h1>
-  <section class="login-page sign-layout">
-    <h2 class="text-ir">로그인 페이지</h2>
-    <div class="tab-wrap">
-      <div class="tab-btns">
-        <button type="button" class="on" data-login-tab="buyer">구매회원 로그인</button>
-        <button type="button" data-login-tab="seller">판매회원 로그인</button>
+    <link rel="stylesheet" href="./assets/style/css/style.css" />
+    <script src="./assets/js/utils/common.js" defer></script>
+  </head>
+  <body>
+    <h1 class="sign-logo">
+      <a href="./index.html"
+        ><img src="./assets/images/Logo-hodu.png" alt="호두 로고"
+      /></a>
+    </h1>
+    <section class="login-page sign-layout">
+      <h2 class="text-ir">로그인 페이지</h2>
+      <div class="tab-wrap">
+        <div class="tab-btns">
+          <button type="button" class="on" data-login-tab="buyer">
+            구매회원 로그인
+          </button>
+          <button type="button" data-login-tab="seller">판매회원 로그인</button>
+        </div>
+        <div class="tab-content">
+          <form id="login-form" class="login-form-content">
+            <input type="text" placeholder="아이디" name="id" id="userId" />
+            <input
+              type="password"
+              placeholder="비밀번호"
+              name="pw"
+              id="userPw"
+              autocomplete="off"
+            />
+            <p class="error-text" id="error-text"></p>
+            <button class="primary-btn" type="submit">로그인</button>
+          </form>
+        </div>
       </div>
-      <div class="tab-content">
-        <form id="login-form" class="login-form-content">
-          <input type="text" placeholder="아이디" name="id" id="userId" />
-          <input type="password" placeholder="비밀번호" name="pw" id="userPw" autoComplete="off" />
-          <p class="error-text" id="error-text"></p>
-          <button class="primary-btn" type="submit">로그인</button>
-        </form>
-      </div>
-    </div>
-    <ul class="login-links">
-      <li><a href="./signup.html">회원가입</a></li>
-      <li><a href="./find-password.html">비밀번호 찾기</a></li>
-    </ul>
-  </section>
-  <script type="module" src="./assets/js/components/login.js"></script>
-</body>
+      <ul class="login-links">
+        <li><a href="./signup.html">회원가입</a></li>
+        <li><a href="./find-password.html">비밀번호 찾기</a></li>
+      </ul>
+    </section>
+    <script type="module" src="./assets/js/components/login.js"></script>
+  </body>
 </html>

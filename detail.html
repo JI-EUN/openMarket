@@ -1,122 +1,181 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>쇼핑몰</title>
-    <link rel="stylesheet" href="./assets/style/css/style.css">
+    <link rel="stylesheet" href="./assets/style/css/style.css" />
     <script src="./assets/js/utils/common.js" defer></script>
-    <script src="./assets/js/components/header.js"defer></script>
-</head>
-<body>
-  <div id="page">
-    <header id="header">
-      <div class="container">
+    <script src="./assets/js/components/header.js" defer></script>
+  </head>
+  <body>
+    <div id="page">
+      <header id="header">
+        <div class="container">
+          <div class="header-main">
+            <h1>
+              <a href="/"
+                ><img src="./assets/images/Logo-hodu.png" alt="호두 로고"
+              /></a>
+            </h1>
+            <form action="">
+              <input type="text" placeholder="상품을 검색해보세요" />
+              <button class="search icon">
+                <span class="text-ir">검색</span>
+              </button>
+            </form>
+          </div>
 
-        <div class="header-main">
-          <h1><a href="/"><img src="./assets/images/Logo-hodu.png" alt="호두 로고"></a></h1>
-          <form action="">
-            <input type="text" placeholder="상품을 검색해보세요"/>
-            <button class="search icon"><span class="text-ir">검색</span></button>
-          </form>
+          <ul class="header-user">
+            <li>
+              <a href="" class="cart"><span>장바구니</span></a>
+            </li>
+          </ul>
         </div>
+      </header>
 
-        <ul class="header-user">
-          <li><a href="" class="cart"><span>장바구니</span></a></li>
-        </ul>
-      </div>
-    </header>
-
-    <main class="product-detail-page container">
-      <section id="product-detail" class="product-container">
-        <h2 class="text-ir">제품 정보</h2>
-      </section>
-      <section class="product-tabs">
+      <main class="product-detail-page container">
+        <section id="product-detail" class="product-container">
+          <h2 class="text-ir">제품 정보</h2>
+        </section>
+        <section class="product-tabs">
           <h2 class="text-ir">제품상세정보</h2>
           <div class="tab-menu">
-            <button class="active" data-tab-index="detail">제품상세</button>
-            <button class="" data-tab-index="detail">리뷰</button>
-            <button class="" data-tab-index="detail">Q&A</button>
-            <button class="" data-tab-index="detail">반품/교환정보</button>
+            <button class="active" data-tab-index="0">제품상세</button>
+            <button data-tab-index="1">리뷰</button>
+            <button data-tab-index="2">Q&A</button>
+            <button data-tab-index="3">반품/교환정보</button>
           </div>
-          <div class="tab-conent">
-            <div></div>
-          </div>
+          <div class="tab-conent">제품상세 정보가 없습니다.</div>
         </section>
-    </main>
+      </main>
 
+      <footer id="footer">
+        <div class="container">
+          <section class="market-site-links">
+            <h2 class="text-ir">하단 쇼핑몰 관련 정보 사이트</h2>
+            <ul class="site-links">
+              <li><a href="">쇼핑몰 소개</a></li>
+              <li><a href="">이용약관</a></li>
+              <li>
+                <a href=""><strong>개인정보처리방침</strong></a>
+              </li>
+              <li><a href="">전자금융거래약관</a></li>
+              <li><a href="">청소년보호정책</a></li>
+              <li><a href="">제휴문의</a></li>
+            </ul>
+            <ul class="sns-links">
+              <li>
+                <a href="">
+                  <span class="text-ir">인스타그램</span>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle
+                      cx="16"
+                      cy="16"
+                      r="15.5"
+                      fill="#767676"
+                      stroke="#767676"
+                    />
+                    <path
+                      d="M20.167 7.66675H11.8337C9.53247 7.66675 7.66699 9.53223 7.66699 11.8334V20.1667C7.66699 22.4679 9.53247 24.3334 11.8337 24.3334H20.167C22.4682 24.3334 24.3337 22.4679 24.3337 20.1667V11.8334C24.3337 9.53223 22.4682 7.66675 20.167 7.66675Z"
+                      stroke="#F2F2F2"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M19.3337 15.475C19.4366 16.1685 19.3181 16.8769 18.9952 17.4992C18.6723 18.1215 18.1614 18.6262 17.5351 18.9414C16.9088 19.2566 16.1991 19.3663 15.5069 19.2549C14.8147 19.1436 14.1752 18.8167 13.6794 18.321C13.1837 17.8252 12.8569 17.1857 12.7455 16.4935C12.6341 15.8013 12.7438 15.0916 13.059 14.4653C13.3742 13.8391 13.8789 13.3281 14.5012 13.0052C15.1236 12.6823 15.8319 12.5638 16.5254 12.6667C17.2328 12.7716 17.8878 13.1012 18.3935 13.6069C18.8992 14.1126 19.2288 14.7676 19.3337 15.475Z"
+                      stroke="#F2F2F2"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M20.583 11.4167H20.5913"
+                      stroke="#F2F2F2"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <span class="text-ir">페이스북</span>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle cx="16" cy="16" r="16" fill="#767676" />
+                    <rect
+                      width="20"
+                      height="20"
+                      transform="translate(5 6)"
+                      fill="#767676"
+                    />
+                    <path
+                      d="M19.9997 7.66669H17.4997C16.3946 7.66669 15.3348 8.10567 14.5534 8.88708C13.772 9.66848 13.333 10.7283 13.333 11.8334V14.3334H10.833V17.6667H13.333V24.3334H16.6663V17.6667H19.1663L19.9997 14.3334H16.6663V11.8334C16.6663 11.6123 16.7541 11.4004 16.9104 11.2441C17.0667 11.0878 17.2787 11 17.4997 11H19.9997V7.66669Z"
+                      fill="#F2F2F2"
+                    />
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <span class="text-ir">youtube</span>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle cx="16" cy="16" r="16" fill="#767676" />
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M24.199 10.2994C24.4829 10.5921 24.6845 10.9544 24.7835 11.3499C25.0478 12.8155 25.1762 14.3024 25.1668 15.7916C25.1721 17.2585 25.0438 18.7229 24.7835 20.1666C24.6845 20.5621 24.4829 20.9244 24.199 21.2171C23.9152 21.5097 23.5591 21.7223 23.1668 21.8333C21.7335 22.2166 16.0002 22.2166 16.0002 22.2166C16.0002 22.2166 10.2668 22.2166 8.83348 21.8333C8.44917 21.7281 8.09847 21.5256 7.81527 21.2453C7.53207 20.965 7.32595 20.6165 7.21682 20.2333C6.95246 18.7677 6.82413 17.2808 6.83348 15.7916C6.82618 14.3135 6.9545 12.8379 7.21682 11.3833C7.31581 10.9878 7.51741 10.6254 7.80127 10.3328C8.08513 10.0401 8.44119 9.82757 8.83348 9.71659C10.2668 9.33325 16.0002 9.33325 16.0002 9.33325C16.0002 9.33325 21.7335 9.33325 23.1668 9.68325C23.5591 9.79424 23.9152 10.0068 24.199 10.2994ZM18.9168 15.7917L14.1251 18.5167V13.0667L18.9168 15.7917Z"
+                      fill="#F2F2F2"
+                    />
+                  </svg>
+                </a>
+              </li>
+            </ul>
+          </section>
+          <section class="company-info">
+            <h2 class="text-ir">회사 정보</h2>
+            <dl>
+              <dt>(주)HODU SHOP</dt>
 
-    <footer id="footer">
-      <div class="container">
-        <section class="market-site-links">
-          <h2 class="text-ir">하단 쇼핑몰 관련 정보 사이트</h2>
-          <ul class="site-links">
-            <li><a href="">쇼핑몰 소개</a></li>
-            <li><a href="">이용약관</a></li>
-            <li><a href=""><strong>개인정보처리방침</strong></a></li>
-            <li><a href="">전자금융거래약관</a></li>
-            <li><a href="">청소년보호정책</a></li>
-            <li><a href="">제휴문의</a></li>
-          </ul>
-          <ul class="sns-links">
-            <li>
-              <a href="">
-                <span class="text-ir">인스타그램</span>
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="16" cy="16" r="15.5" fill="#767676" stroke="#767676"/>
-                  <path d="M20.167 7.66675H11.8337C9.53247 7.66675 7.66699 9.53223 7.66699 11.8334V20.1667C7.66699 22.4679 9.53247 24.3334 11.8337 24.3334H20.167C22.4682 24.3334 24.3337 22.4679 24.3337 20.1667V11.8334C24.3337 9.53223 22.4682 7.66675 20.167 7.66675Z" stroke="#F2F2F2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M19.3337 15.475C19.4366 16.1685 19.3181 16.8769 18.9952 17.4992C18.6723 18.1215 18.1614 18.6262 17.5351 18.9414C16.9088 19.2566 16.1991 19.3663 15.5069 19.2549C14.8147 19.1436 14.1752 18.8167 13.6794 18.321C13.1837 17.8252 12.8569 17.1857 12.7455 16.4935C12.6341 15.8013 12.7438 15.0916 13.059 14.4653C13.3742 13.8391 13.8789 13.3281 14.5012 13.0052C15.1236 12.6823 15.8319 12.5638 16.5254 12.6667C17.2328 12.7716 17.8878 13.1012 18.3935 13.6069C18.8992 14.1126 19.2288 14.7676 19.3337 15.475Z" stroke="#F2F2F2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M20.583 11.4167H20.5913" stroke="#F2F2F2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </a>
-            </li>
-            <li>
-              <a href="">
-                <span class="text-ir">페이스북</span>
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="16" cy="16" r="16" fill="#767676"/>
-                  <rect width="20" height="20" transform="translate(5 6)" fill="#767676"/>
-                  <path d="M19.9997 7.66669H17.4997C16.3946 7.66669 15.3348 8.10567 14.5534 8.88708C13.772 9.66848 13.333 10.7283 13.333 11.8334V14.3334H10.833V17.6667H13.333V24.3334H16.6663V17.6667H19.1663L19.9997 14.3334H16.6663V11.8334C16.6663 11.6123 16.7541 11.4004 16.9104 11.2441C17.0667 11.0878 17.2787 11 17.4997 11H19.9997V7.66669Z" fill="#F2F2F2"/>
-                </svg>
-              </a>
-            </li>
-            <li>
-              <a href="">
-                <span class="text-ir">youtube</span>
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="16" cy="16" r="16" fill="#767676"/>
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M24.199 10.2994C24.4829 10.5921 24.6845 10.9544 24.7835 11.3499C25.0478 12.8155 25.1762 14.3024 25.1668 15.7916C25.1721 17.2585 25.0438 18.7229 24.7835 20.1666C24.6845 20.5621 24.4829 20.9244 24.199 21.2171C23.9152 21.5097 23.5591 21.7223 23.1668 21.8333C21.7335 22.2166 16.0002 22.2166 16.0002 22.2166C16.0002 22.2166 10.2668 22.2166 8.83348 21.8333C8.44917 21.7281 8.09847 21.5256 7.81527 21.2453C7.53207 20.965 7.32595 20.6165 7.21682 20.2333C6.95246 18.7677 6.82413 17.2808 6.83348 15.7916C6.82618 14.3135 6.9545 12.8379 7.21682 11.3833C7.31581 10.9878 7.51741 10.6254 7.80127 10.3328C8.08513 10.0401 8.44119 9.82757 8.83348 9.71659C10.2668 9.33325 16.0002 9.33325 16.0002 9.33325C16.0002 9.33325 21.7335 9.33325 23.1668 9.68325C23.5591 9.79424 23.9152 10.0068 24.199 10.2994ZM18.9168 15.7917L14.1251 18.5167V13.0667L18.9168 15.7917Z" fill="#F2F2F2"/>
-                </svg>
-              </a>
-            </li>
-          </ul>
-        </section>
-        <section class="company-info">
-          <h2 class="text-ir">회사 정보</h2>
-          <dl>
-            <dt>(주)HODU SHOP</dt>
+              <dt class="text-ir">주소</dt>
+              <dd>제주특별자치도 제주시 동광고 137 제주코딩베이스캠프</dd>
 
-            <dt class="text-ir">주소</dt>
-            <dd>제주특별자치도 제주시 동광고 137 제주코딩베이스캠프</dd>
-            
-            <dt>사업자 번호 :</dt>
-            <dd>000-0000-0000</dd>
+              <dt>사업자 번호 :</dt>
+              <dd>000-0000-0000</dd>
 
-            <dt class="text-ir">업종</dt>
-            <dd>통신판매업</dd>
-          </dl>
-          <dl class="ceo">
-            <dt>대표 :</dt>
-            <dd> 김호두</dd>
-          </dl>
-        </section>
-      </div>
-    </footer>
-  </div>
+              <dt class="text-ir">업종</dt>
+              <dd>통신판매업</dd>
+            </dl>
+            <dl class="ceo">
+              <dt>대표 :</dt>
+              <dd>김호두</dd>
+            </dl>
+          </section>
+        </div>
+      </footer>
+    </div>
 
-
-
-  <script type="module" src="./assets/js/components/detail.js"></script>
-</body>
+    <script type="module" src="./assets/js/components/detail.js"></script>
+  </body>
 </html>

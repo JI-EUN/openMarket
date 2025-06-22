@@ -1,20 +1,20 @@
-button{
+button {
   cursor: pointer;
-  &:disabled{
+  &:disabled {
     background-color: #c4c4c4;
-    color:$white-color;
-    &:hover{
+    color: $white-color;
+    &:hover {
       background-color: #c4c4c4;
     }
   }
 }
-.btn{
+.btn {
   text-align: center;
 }
-.primary-btn{
- @include button()
+.primary-btn {
+  @include button();
 }
-.gray-line-btn{
- @include button($bgColor:#ffffff,$textColor:$font-gray);
- border:1px solid $line-gray;
+.gray-line-btn {
+  @include button($bgColor: #ffffff, $textColor: $font-gray);
+  border: 1px solid $line-gray;
 }
