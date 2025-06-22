@@ -38,16 +38,16 @@ function renderProduct(product) {
         <button class="quantity-minus">
           <span class="text-ir">감소</span>
         </button>
-        <input id="count" type="number" min="1" value="1"/>
+        <input id="count" type="number" min="1" value="1" readonly/>
         <button class="quantity-plus">
           <span class="text-ir">증가</span>
         </button>
       </div>
-      <section>
+      <section class="total-price-info">
         <h4>총 상품금액</h4>
         <ul class="total-price">
-          <li>총 수량 <span id="order-num">1</span>개</li>
-          <li><b id="total-price">${product.price.toLocaleString()}</b>원</li>
+          <li>총 수량 <span class="primary-color" id="order-num">1</span>개</li>
+          <li class="primary-color"><b id="total-price">${product.price.toLocaleString()} </b>원</li>
         </ul>
       </section>
       <div class="buttons">

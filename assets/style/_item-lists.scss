@@ -8,6 +8,15 @@
   .product-list{
     width:380px;
     flex-shrink: 0;
+    .img-wrap{
+      width: 380px;
+      height: 380px;
+      overflow: hidden;
+      border-radius: 10px;
+      img{
+        transition: all 0.4s;
+      }
+    }
     .product-brand{
       color:$font-gray;
     }
@@ -19,6 +28,13 @@
       b{
         font-size:$font-size-xl;
         font-weight: 700;
+      }
+    }
+    &:hover{
+      .img-wrap{
+        img{
+          transform: scale(1.2)
+        }
       }
     }
   }

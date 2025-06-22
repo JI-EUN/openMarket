@@ -1,5 +1,50 @@
 .main-banner-wrap{
   background-color: gray;
-  height: 500px;
   margin-bottom: 80px;
+  position: relative;
+  .swiper{
+    height: 500px;
+    overflow: hidden;
+    img{
+      position: absolute;
+      top:50%;
+      left:0;
+      transform: translateY(-50%)
+    }
+    .pagination{
+      @include flexbox;
+      gap:6px;
+      position: absolute;
+      bottom: 20px;
+      left:50%;
+      transform: translateX(-50%);
+      z-index: 1;
+      span{
+        width: 6px;
+        height: 6px;
+        background-color: $white-color;
+        border-radius: 50%;
+        opacity: 1;
+        margin:0;
+        &.swiper-pagination-bullet-active{
+          background-color: #000000;
+        }
+      }
+    }
+    .swiper-button-next, 
+    .swiper-button-prev{
+      width: 60px;
+      height: 124px;
+      font-size: 0;
+      &::after{
+        display: none;
+      }
+    }
+    .swiper-button-prev{
+      background: url('./../../images/icon-swiper-1.svg') no-repeat 50%;
+    }
+    .swiper-button-next{
+      background: url('./../../images/icon-swiper-2.svg') no-repeat 50%;
+    }
+  }
 }

@@ -38,5 +38,18 @@ function renderProducts(products) {
   });
 }
 
+
+//swiper
+var swiper = new Swiper(".swiper", {
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  pagination: {
+    el: ".pagination",
+  },
+});
+
+
 // 실행
 fetchProducts();

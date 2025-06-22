@@ -1,5 +1,5 @@
+ @import './variables';
 @import './reset';
-@import './variables';
 @import './mixin';
 @import './layout';
 @import './footer';
@@ -19,4 +19,7 @@
 
 //제품상세
 @import './product-detail';
-@import './_cart-modal';
+@import './cart-modal';
+
+//error페이지
+@import './error-page';

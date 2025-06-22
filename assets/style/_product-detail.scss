@@ -37,39 +37,43 @@
   .product-info {
     grid-column: 2 / 3;
     grid-row: 1 / 2;
-    .price {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #2d2d2d;
+    .product-brand{
+      color:$font-gray;
+      font-size: $font-size-md;
+    }
+    .product-name{
+      font-size: 36px;
+      margin: 16px 0 20px;
+      font-weight: normal;
+    }
+    .product-price {
+      font-size: $font-size-md;
+      b{
+        font-size: 36px;
+      }
     }
   }
   .product-action {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
-    border-top: 1px solid #ccc;
     padding-top: 1rem;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-
-    .delivery {
-      color: #777;
-    }
-
-
+    justify-content: flex-end;
     .total-price {
       font-weight: bold;
       font-size: 1.2rem;
     }
-
     .buttons {
       display: flex;
-      gap: 1rem;
-
+      gap: 14px;
       button {
+        border-radius: 5px;
+        font-size: $font-size-md;
         &.cart-btn {
           background-color: #444;
           color: white;
+          width: 200px;
         }
       }
     }
@@ -78,10 +82,14 @@
 
   .product-action{
     .delivery-info{
-
+      color: #777;
     }
     .quantity{
       display: flex;
+      padding:30px 0;
+      border:2px solid $line-gray;
+      border-width: 2px 0;
+      margin:20px 0 32px;
       button{
         width: 48px;
         height: 48px;
@@ -89,11 +97,13 @@
         &.quantity-minus{
           border-radius: 5px 0 0 5px;
           border-right:none;
+          background: url('../../images/icon-minus-line.svg') no-repeat 50%;
 
         }
         &.quantity-plus{
           border-radius: 0 5px 5px 0;
           border-left:none;
+          background: url('../../images/icon-plus-line.svg') no-repeat 50%;
         }
       }
       input{
@@ -106,6 +116,37 @@
         &::-webkit-inner-spin-button {
           -webkit-appearance: none;
           margin: 0;
+        }
+      }
+    }
+    .total-price-info{
+      @include flexbox(space-between,center);
+      margin-bottom:22px;
+      h4{
+        font-weight: normal;
+        font-size: $font-size-md
+      }
+      .total-price{
+        @include flexbox(space-between,center);
+        li{
+          font-size: $font-size-md;
+          font-weight: normal;
+          &:nth-child(1){
+            color:$font-gray;
+            padding-right: 28px;
+            position: relative;
+            &::after{
+              content: "";
+              position: absolute;
+              width: 1px;
+              height: 17px; 
+              background-color: $line-gray;
+              right:14px;
+            }
+          }
+          b{
+            font-size: 36px;
+          }
         }
       }
     }

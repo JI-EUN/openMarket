@@ -5,9 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>쇼핑몰</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="./assets/style/css/style.css">
     <script src="./assets/js/utils/common.js" defer></script>
-    <script src="./assets/js/header.js"defer></script>
+    <script src="./assets/js/components/header.js"defer></script>
 </head>
 <body>
   <div id="page">
@@ -18,20 +20,45 @@
           <h1><a href="/"><img src="./assets/images/Logo-hodu.png" alt="호두 로고"></a></h1>
           <form action="">
             <input type="text" placeholder="상품을 검색해보세요!"/>
-            <button class="text-ir search icon">검색</button>
+            <button class="search icon"><span class="text-ir">검색</span></button>
           </form>
         </div>
 
         <ul class="header-user">
-          <li><a href=""><span>장바구니</span></a></li>
+          <li><a href="" class="cart"><span>장바구니</span></a></li>
         </ul>
       </div>
     </header>
 
     <main>
+      <!--메인배너영역-->
       <section class="main-banner-wrap">
         <h2 class="text-ir">제품 광고 배너</h2>
+        <div class="swiper">
+          <!-- Additional required wrapper -->
+          <div class="swiper-wrapper">
+            <!-- Slides -->
+            <div class="swiper-slide">
+              <img src="./assets/images/book-2163932_1920.jpg" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="./assets/images/cat-6578336_1920.jpg" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="./assets/images/cat-7598590_1920.jpg" alt="">
+            </div>
+            ...
+          </div>
+          <!-- If we need pagination -->
+          <div class="pagination"></div>
+
+          <!-- If we need navigation buttons -->
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
       </section>
+      <!--메인배너영역-->
+
       <section>
         <h2 class="text-ir">오픈마켓 상품 리스트들</h2>
       </section>
@@ -101,14 +128,15 @@
 
             <dt class="text-ir">업종</dt>
             <dd>통신판매업</dd>
-
-            <dt>대표</dt>
-            <dd>김호두</dd>
+          </dl>
+          <dl class="ceo">
+            <dt>대표 :</dt>
+            <dd> 김호두</dd>
           </dl>
         </section>
       </div>
     </footer>
   </div>
-  <script type="module" src="./assets/js/pages/index.js"></script>
+  <script type="module" src="./assets/js/components/index.js"></script>
 </body>
 </html>

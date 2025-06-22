@@ -68,6 +68,12 @@ footer{
           margin-bottom: 0;
         }
       }
+      &.ceo{
+        @include flexbox(flex-start,center);
+        dt{
+          font-weight: normal;
+        }
+      }
     }
   }
 }

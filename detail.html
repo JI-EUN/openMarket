@@ -7,7 +7,7 @@
     <title>쇼핑몰</title>
     <link rel="stylesheet" href="./assets/style/css/style.css">
     <script src="./assets/js/utils/common.js" defer></script>
-    <script src="./assets/js/header.js"defer></script>
+    <script src="./assets/js/components/header.js"defer></script>
 </head>
 <body>
   <div id="page">
@@ -17,13 +17,13 @@
         <div class="header-main">
           <h1><a href="/"><img src="./assets/images/Logo-hodu.png" alt="호두 로고"></a></h1>
           <form action="">
-            <input type="text" placeholder="상품을 검색해보세요!"/>
-            <button class="text-ir search icon">검색</button>
+            <input type="text" placeholder="상품을 검색해보세요"/>
+            <button class="search icon"><span class="text-ir">검색</span></button>
           </form>
         </div>
 
         <ul class="header-user">
-          <li><a href=""><span>장바구니</span></a></li>
+          <li><a href="" class="cart"><span>장바구니</span></a></li>
         </ul>
       </div>
     </header>
@@ -40,7 +40,9 @@
             <button class="" data-tab-index="detail">Q&A</button>
             <button class="" data-tab-index="detail">반품/교환정보</button>
           </div>
-          <div class="tab-conent"></div>
+          <div class="tab-conent">
+            <div></div>
+          </div>
         </section>
     </main>
 
@@ -103,9 +105,10 @@
 
             <dt class="text-ir">업종</dt>
             <dd>통신판매업</dd>
-
-            <dt>대표</dt>
-            <dd>김호두</dd>
+          </dl>
+          <dl class="ceo">
+            <dt>대표 :</dt>
+            <dd> 김호두</dd>
           </dl>
         </section>
       </div>
@@ -114,6 +117,6 @@
 
 
 
-  <script type="module" src="./assets/js/pages/detail.js"></script>
+  <script type="module" src="./assets/js/components/detail.js"></script>
 </body>
 </html>
