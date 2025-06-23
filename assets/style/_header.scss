@@ -1,79 +1,74 @@
-header{
-  box-shadow:0 4px 4px rgba(0,0,0,.25);
-  .container{
+header {
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  .container {
     @include flexbox(space-between);
-    padding:22px 0;
-    div{
+    padding: 22px 0;
+    div {
       @include flexbox();
-      h1{
+      h1 {
         width: 124px;
         margin-right: 30px;
       }
-      form{
+      form {
         position: relative;
-        input{
-          padding:13px 22px;
+        input {
+          padding: 13px 22px;
           width: 400px;
-          border:2px solid $primary-color;
+          border: 2px solid $primary-color;
           border-radius: 50px;
           font-size: $font-size-base;
         }
-        .search{
+        .search {
           position: absolute;
           width: 28px;
           height: 28px;
-          right:22px;
-          top:9px;
-          background: url('../../images/icon-search.svg') no-repeat 50%;
+          right: 22px;
+          top: 9px;
+          background: url("../../images/icon-search.svg") no-repeat 50%;
         }
       }
     }
-    .header-user{
+    .header-user {
       @include flexbox();
-      gap:26px;
-      >li{
+      gap: 26px;
+      > li {
         position: relative;
-        >a{
+        > a,
+        > button {
           font-size: 0;
-          &::before{
-            content: "";
+          svg {
             display: block;
-            width: 32px;
-            height: 32px;
-            margin:0 auto 4px;
+            margin: 0 auto 4px;
           }
-          &.cart{
-            &::before{
-              background:url('../../images/icon-shopping-cart.svg');
+          &:hover {
+            svg {
+              path {
+                stroke: $primary-color;
+              }
             }
           }
         }
-        .sign{
-          &::before{
-            content: "";
-            display: block;
-            width: 32px;
-            height: 32px;
-            margin:0 auto 4px;
-            background:url('../../images/icon-user.svg');
-          }
-        }
-        span{
-          color:$font-gray;
-          font-size:$font-size-xs;
+        span {
+          color: $font-gray;
+          font-size: $font-size-xs;
         }
 
-        &.seller-center-btn{
-          a{
+        &.seller-center-btn {
+          a {
             @include flexbox();
-            padding:11px 20px;
-            &::before{
+            padding: 11px 20px;
+            &::before {
+              content: "";
+              display: block;
+              width: 32px;
+              height: 32px;
               margin-bottom: 0;
               margin-right: 8px;
-              background:url('../../images/icon-shopping-bag.svg');
+              background: url("../../images/icon-shopping-bag.svg");
             }
-            span{
-              color:$white-color;
+            span {
+              color: $white-color;
+              font-size: $font-size-md;
             }
           }
         }
@@ -81,35 +76,35 @@ header{
     }
   }
 
-
   //마이페이지 팝업
-  .header-mypage-lists{
+  .header-mypage-lists {
     position: absolute;
     width: 130px;
-    padding:20px 10px 10px;
+    padding: 20px 10px 10px;
     display: block;
-    left:50%;
-    transform:translateX(-50%);
-    background:url('../../images/mypage_dropdown.png') no-repeat;
+    left: 50%;
+    transform: translateX(-50%);
+    background: url("../../images/mypage_dropdown.png") no-repeat;
     background-size: contain;
-    z-index: 1;
-    li{
+    z-index: 2;
+    li {
       text-align: center;
-      margin-bottom:8px;
-      &:last-child{
-        margin-bottom:0;
+      margin-bottom: 8px;
+      &:last-child {
+        margin-bottom: 0;
       }
-      button,a{
+      button,
+      a {
         height: 40px;
         line-height: 40px;
         display: inline-block;
         width: 100%;
-        color:$font-gray;
+        color: $font-gray;
         font-size: $font-size-base;
-        &:hover{
-          border:1px solid $line-gray;
+        &:hover {
+          border: 1px solid $line-gray;
           border-radius: 5px;
-          color:#000;
+          color: #000;
         }
       }
     }

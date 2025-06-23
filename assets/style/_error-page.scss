@@ -1,27 +1,28 @@
-.error-page{
+.error-page {
   @include flexbox;
   width: 100%;
   min-height: 100vh;
-  section{
-    min-height: 236px;;
-    padding-left:326px;
-    background: url('../../images/icon-404.png') no-repeat 0 0;
-    @include flexbox(center,flex-start);
+  section {
+    min-height: 236px;
+    padding-left: 326px;
+    background: url("../../images/icon-404.png") no-repeat 0 0;
+    @include flexbox(center, flex-start);
     flex-direction: column;
-    h1{
+    h1 {
       font-size: 36px;
     }
-    p{
-      color:$font-gray;
+    p {
+      color: $font-gray;
       line-height: 1.25;
-      margin:20px 0 40px;
+      margin: 20px 0 40px;
     }
-    .btns-wrap{
+    .btns-wrap {
       @include flexbox;
-      gap:14px;
-      .btn{
+      gap: 14px;
+      .btn {
         width: 200px;
-        padding:19px 0;
+        line-height: 22px;
+        padding: 19px 0;
       }
     }
   }

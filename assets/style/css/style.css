@@ -234,26 +234,18 @@ header .container .header-user {
 header .container .header-user > li {
   position: relative;
 }
-header .container .header-user > li > a {
+header .container .header-user > li > a,
+header .container .header-user > li > button {
   font-size: 0;
 }
-header .container .header-user > li > a::before {
-  content: "";
+header .container .header-user > li > a svg,
+header .container .header-user > li > button svg {
   display: block;
-  width: 32px;
-  height: 32px;
   margin: 0 auto 4px;
 }
-header .container .header-user > li > a.cart::before {
-  background: url("../../images/icon-shopping-cart.svg");
-}
-header .container .header-user > li .sign::before {
-  content: "";
-  display: block;
-  width: 32px;
-  height: 32px;
-  margin: 0 auto 4px;
-  background: url("../../images/icon-user.svg");
+header .container .header-user > li > a:hover svg path,
+header .container .header-user > li > button:hover svg path {
+  stroke: #21BF48;
 }
 header .container .header-user > li span {
   color: #767676;
@@ -266,12 +258,17 @@ header .container .header-user > li.seller-center-btn a {
   padding: 11px 20px;
 }
 header .container .header-user > li.seller-center-btn a::before {
+  content: "";
+  display: block;
+  width: 32px;
+  height: 32px;
   margin-bottom: 0;
   margin-right: 8px;
   background: url("../../images/icon-shopping-bag.svg");
 }
 header .container .header-user > li.seller-center-btn a span {
   color: #ffffff;
+  font-size: 1.125rem;
 }
 header .header-mypage-lists {
   position: absolute;
@@ -282,7 +279,7 @@ header .header-mypage-lists {
   transform: translateX(-50%);
   background: url("../../images/mypage_dropdown.png") no-repeat;
   background-size: contain;
-  z-index: 1;
+  z-index: 2;
 }
 header .header-mypage-lists li {
   text-align: center;
@@ -291,7 +288,8 @@ header .header-mypage-lists li {
 header .header-mypage-lists li:last-child {
   margin-bottom: 0;
 }
-header .header-mypage-lists li button, header .header-mypage-lists li a {
+header .header-mypage-lists li button,
+header .header-mypage-lists li a {
   height: 40px;
   line-height: 40px;
   display: inline-block;
@@ -299,7 +297,8 @@ header .header-mypage-lists li button, header .header-mypage-lists li a {
   color: #767676;
   font-size: 1rem;
 }
-header .header-mypage-lists li button:hover, header .header-mypage-lists li a:hover {
+header .header-mypage-lists li button:hover,
+header .header-mypage-lists li a:hover {
   border: 1px solid #C4C4C4;
   border-radius: 5px;
   color: #000;
@@ -929,5 +928,6 @@ button:disabled:hover {
 }
 .error-page section .btns-wrap .btn {
   width: 200px;
+  line-height: 22px;
   padding: 19px 0;
 }/*# sourceMappingURL=style.css.map */
